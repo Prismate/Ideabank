@@ -5,27 +5,32 @@ def read_ideas_from_file(filename="ideabank.txt"):
     file.close()
     return ideas
 
+
 def list_ideas():
     ideas = read_ideas_from_file()
     for i in ideas:
         print(f"{ideas.index(i) + 1}. {i}")
 
+        
 def save_ideas_to_file(ideas, filename="ideabank.txt"):
     with open(filename, 'w') as fp:
         for item in ideas:
             fp.write("%s\n" % item)
 
+            
 def remove_idea(index):
     ideas = read_ideas_from_file()
     ideas.pop(index-1)
     print(f"You deleted {index} idea.")
     return ideas
 
+
 def create_idea(idea):
     ideas = read_ideas_from_file()
     ideas.append(idea)
     save_ideas_to_file(ideas)
 
+    
 def main():
     while True:
         new_idea = input("What is your new idea? \n")
@@ -47,4 +52,5 @@ def main():
         else:
             create_idea(new_idea)
 
+            
 main()
